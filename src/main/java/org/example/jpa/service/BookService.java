@@ -5,6 +5,8 @@ import org.example.jpa.entity.Book;
 import org.example.jpa.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class BookService {
@@ -13,5 +15,9 @@ public class BookService {
     public void addBook(Book book) {
         Book newBook = bookRepository.save(book);
         System.out.println("newBook = " + newBook);
+    }
+
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
     }
 }
