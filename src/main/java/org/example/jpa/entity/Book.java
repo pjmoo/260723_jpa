@@ -7,6 +7,7 @@ import lombok.*;
 @Entity
 @Table(name = "books")
 // Lombok
+@ToString
 @Getter // 모듈화, 은닉성 ... DB에서 중시하는 요소들 때문에 속성들을 private 처리함. (접근제어자)
 // 생성자 계열
 // NoArgsConstructor -> 기본생성자가 있어야 Entity -> JPA
