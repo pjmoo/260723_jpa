@@ -15,7 +15,7 @@
 </section>
 <section>
     <c:forEach items="${books}" var="book">
-        <p>${book}</p>
+        <p>${book} <a href="/${book.id}">자세히보기</a></p>
     </c:forEach>
 </section>
 </body>

@@ -30,4 +30,14 @@ public class BookService {
         // JPA -> Optional<Entity>
         // Null 처리에 대한 옵션을 준다
     }
+
+    public void updateBook(Book book) {
+        bookRepository.save(book);
+        // 1. id가 비어있음 -> 새로운 영속성 컨텍스트의 entity를 만들어서 신규 insert
+        // 2. id가 있음 -> 기존의 영속성 컨텍스트의 entity를 찾아서 update
+    }
+
+    public void deleteBookById(Long id) {
+        bookRepository.deleteById(id);
+    }
 }

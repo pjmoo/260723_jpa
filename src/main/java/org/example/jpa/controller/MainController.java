@@ -34,4 +34,22 @@ public class MainController {
         model.addAttribute("book", book);
         return "detail";
     }
+
+    @PostMapping("/{id}")
+    public String updateBook(
+            @PathVariable Long id,
+            @ModelAttribute BookFormDTO dto) {
+        bookService.updateBook(Book.builder()
+                .id(id)
+                .title(dto.title())
+                .author(dto.author())
+                .build());
+        return "redirect:/";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteBook(@PathVariable Long id) {
+        bookService.deleteBookById(id);
+        return "redirect:/";
+    }
 }
