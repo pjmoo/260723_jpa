@@ -13,5 +13,10 @@
         <button>추가</button>
     </form>
 </section>
+<section>
+    <c:forEach items="${books}" var="book">
+        <p>${book}</p>
+    </c:forEach>
+</section>
 </body>
 </html>

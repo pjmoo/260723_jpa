@@ -6,10 +6,7 @@ import org.example.jpa.entity.Book;
 import org.example.jpa.service.BookService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping
@@ -29,5 +26,12 @@ public class MainController {
     public String addBook(@ModelAttribute BookFormDTO dto) {
         bookService.addBook(dto.toEntity());
         return "redirect:/";
+    }
+
+    @GetMapping("/{id}")
+    public String getBook(@PathVariable Long id, Model model) {
+        Book book = bookService.getBookById(id); // 없는 id를 주면 throw
+        model.addAttribute("book", book);
+        return "detail";
     }
 }

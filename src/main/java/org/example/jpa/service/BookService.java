@@ -18,6 +18,16 @@ public class BookService {
     }
 
     public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+        return bookRepository.findAll(); // 리스트
+    }
+
+    public Book getBookById(Long id) {
+        // Optional
+        return bookRepository.findById(id)
+                // .get(); // 없으면 null인 상태로 가져옴
+                .orElseThrow(); // null이면 throw해버리세요 (NoSuchElementException)
+        // DB 조회할 때 '존재하지 않을 가능성'
+        // JPA -> Optional<Entity>
+        // Null 처리에 대한 옵션을 준다
     }
 }
